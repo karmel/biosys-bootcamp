@@ -3,12 +3,16 @@
 '''I first import a set of packages that include functions used in script
 (apparetly during cleaning/debugging I removed some of the functions and no longer used
 some of the packages'''
+# Yeah, be careful with that. If you have a tendency to accidentally break your own code,
+# I highly, highly suggest you version all code using git or an equivalent.
 import numpy as np
 import scipy
 from pandas import *
 from pandas.io import *
 import os
 from scipy import *
+
+# Where is my object?
 
 '''change current working directory and load tab delimited file
 		-set rownames to be Gene Accession IDs due to redundant genes
@@ -24,6 +28,9 @@ data = parsers.read_csv('data_set_HL60_U937_NB4_Jurkat.txt', sep="\t", index_col
 '''To check unique genes, first extract Gene Discription columns and use the set function.
 This lets us remove duplicated genes.  I then created a list of the duplicated genes and used
 the len function to calculate the length'''
+# Love the detailed comments, but I advise getting used to writing in passive sentences,
+# or in sentences where the code itself is the actor.
+# Bad for English, good for scientists.
 unique = list(set(data['Gene Description']))
 len(unique) ##5001
 
@@ -82,6 +89,7 @@ probesets.  For within cell type, check for presence only in specified cell type
 For within all cell type, check for Present in all.
 -Then, Generate fold change values and use logial operators to filter FC > abs(2)
 '''
+# Clever of you to figure out what those call columns were for. I didn't even consider them.
 hl60present = data[(data[data.columns[2]] == 'P') & (data[data.columns[8]] == 'P')]
 diffhl60 = hl60present[hl60present.columns[7]]/hl60present[hl60present.columns[1]]
 diffhl60[np.logical_or((diffhl60>2), (diffhl60<.5))]   #704
