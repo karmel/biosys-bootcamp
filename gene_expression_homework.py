@@ -66,16 +66,16 @@ class ExpressionAnalyzer(object):
 		''' Return count of genes fold_change higher in t1 than t2 for all cell_type_names.'''
 		higher = None
 		for cell in cell_type_names:
-			higher_bool = data['{}_{}_hrs'.format(cell, t1)] >= fold_change*data['{}_{}_hrs'.format(cell, t2)]
-			higher_set = set(data[higher_bool]['Gene Description'])
+			higher_bool = data['{}_{}_hrs'.format(cell, t1)] > fold_change*data['{}_{}_hrs'.format(cell, t2)]
+			higher_set = set(data[higher_bool]['Gene Accession Number'])
 			if higher is None: higher = higher_set
-		else: higher = higher_set & higher
+			else: higher = higher_set & higher
 		return len(higher)
 	
 	def genes_differential(self, data, cell1, cell2, timepoint, fold_change=2):
 		''' Return list of genes fold_change higher between cell1 and cell2 at given timepoint. '''
-		higher_bool = data['{}_{}_hrs'.format(cell1, timepoint)] >= fold_change*data['{}_{}_hrs'.format(cell2, timepoint)]
-		lower_bool = data['{}_{}_hrs'.format(cell1, timepoint)]*fold_change <= data['{}_{}_hrs'.format(cell2, timepoint)]
+		higher_bool = data['{}_{}_hrs'.format(cell1, timepoint)] > fold_change*data['{}_{}_hrs'.format(cell2, timepoint)]
+		lower_bool = data['{}_{}_hrs'.format(cell1, timepoint)]*fold_change < data['{}_{}_hrs'.format(cell2, timepoint)]
 		# Return accession numbers less the suffix after the underscore, which is some sort of isoform id
 		return map(lambda x: x.split('_')[0], data[higher_bool & lower_bool]['Gene Accession Number'])
 		
@@ -97,7 +97,7 @@ class BroadExpressionAnalyzer(ExpressionAnalyzer):
 if __name__ == '__main__':
 
 	try: filename = sys.argv[1]
-	except IndexError: filename = '/Users/karmel/Desktop/Projects/Classes/Bootcamp/broad_data_set.txt'
+	except IndexError: filename = '/Users/karmel/Desktop/Projects/Classes/Bootcamp/Repositories/Python HW/broad_data_set.txt'
 	ea = BroadExpressionAnalyzer()
 
 	data = ea.import_file(filename)
