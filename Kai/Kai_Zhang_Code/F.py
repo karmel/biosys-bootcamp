@@ -28,6 +28,7 @@ class DiffExpression(object):
 	def diffGenes(self, s1, s2):
 		fl = open('differentiated_expression.txt', 'w')
 		for i in range(0, len(self.dataframe[s1])):
+			# Make sure to import division from __future__ if you do float division, just to be safe
 			ratio = self.dataframe[s1][i] / self.dataframe[s2][i]
 			if(ratio >= 2 or ratio <= 0.5):
 				fl.write(self.dataframe.ix[i][1] + '\n')
