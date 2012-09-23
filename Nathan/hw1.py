@@ -25,8 +25,9 @@
 # G: According to the DAVID ontology analyzer, there are 1775 DAVID IDs from the list. 
 ###################################################################
 
+# Well-commented. Props for that!
 
-from __future__ import division
+from __future__ import division # Isn't there something rewarding about importing from THE FUTURE?
 from pandas import *
 import numpy as np
 import pandas as pd
@@ -57,7 +58,7 @@ class ExpressionAnalyzer(object):
 		'''	Which two cell types are the most similar? '''
 		# creates a file with an array of correlations
 		# need to implement way to read and compare correlations (not currently here)
-		correlations = (self.df).corr(method = 'pearson')
+		correlations = self.df.corr(method = 'pearson') # Parenthesis around self.df not necessary here or elsewhere
 		# outputs correlations to a csv file
 		correlations.to_csv('hw1_correlations.csv')
 
@@ -70,6 +71,7 @@ class ExpressionAnalyzer(object):
 		return variances[:10]
 
 	# not very general code here
+	# At least you recognize it :) Would you know how to generalize it the next time around?
 	def two_fold(self, hl0, hl24, u0, u24, nb0, nb24, j0, j24):
 		'''	Do any genes show two-fold higher expression at 24 hours versus 0 hours for all four cell types?  '''
 	 	'''	Which genes are differentially regulated (at least two-fold higher or lower) in HL60 cells as compared to U937 cells at 0 hours? '''
@@ -88,6 +90,7 @@ class ExpressionAnalyzer(object):
 		different.to_csv('hw1_different.csv')
 
 
+# Add if __name__ == '__main__': and indent. Google for why that is important.
 # answer output section
 ea = ExpressionAnalyzer()
 ea.import_file('data_set_HL60_U937_NB4_Jurkat.csv')
