@@ -4,7 +4,7 @@ from pandas.io import parsers
 from pandas import Series, DataFrame
 import scipy as sp
 import numpy as np
-import re # was using this, but not anymore
+import re # was using this, but not anymore -- so why not remove it?
 
 # Importing File 
 #reads in tab delimited data from a local file to turn into dataframe
@@ -12,9 +12,9 @@ import re # was using this, but not anymore
 #readin( 'C:\Python27\data.txt')
 def readin (filename):
     data= pandas.io.parsers.read_table(filename,sep='\t*',skiprows=0 ,header= 0,na_values=' ')
-    data= DataFrame(data)
+    data= DataFrame(data) # This I think is unnecessary-- the parser returns a DF
     print data.columns
-    return(data)
+    return(data) # Should be return data, without parentheses
 
 ##Part A 
 #Gets rid of redundant genes to tell you how many genes are in the array
@@ -33,7 +33,7 @@ def redundant (df,item):
             b=b+1
     numgenes=((len(a))-b-c) # total genes-redundant gene descreptions- emptys 
     return (numgenes)
-   
+    # Make sure to look at my solution for this one
 
 
 #Part B 
@@ -59,6 +59,8 @@ def corwithincell(df):
     df=df.drop('call.14',axis=1)
     df=df.drop('call.15',axis=1)
     df=df.drop('call.16',axis=1)
+
+# Take a look at the pandas filter function for more general name filtering operations...
 
 #HL60 cells at 4 timepoints  (should have appended all of these together, didn't have time to)
     cellone=df[df.columns[2]]
