@@ -35,7 +35,9 @@ Example run:
 python botvinnik_hw1.py -f data/data_set_HL60_U937_NB4_Jurkat.csv -N 10 -t0 0_hrs -t1 24_hrs --sampleA HL60 --sampleB U937 --timeX _0_hrs
 '''
 
-class CommandLine:
+# Props for really nice commenting. Thanks!
+
+class CommandLine(object): # Google for new versus old style classes to find out why (object) is important there...
 	def __init__(self, inOpts=None):
 		self.parser = argparse.ArgumentParser(description = '''Import a dataset
 			and query properties such as number of distinct genes, the two
@@ -89,6 +91,11 @@ class Usage(Exception):
 	'''
 	def __init__(self, msg):
 		self.msg = msg
+		
+	# Credit for doing a lot of work, but this is actually sort of unnecessary;
+	# if you extend the base exception class, it should be for good reason,
+	# and even if there is reason, this sort of init is somewhat redundant.
+	# But, as I said, credit for thoroughness :)
 
 class ExpressionAnalyzer(object):
 	def __init__(self, cl_args):
@@ -173,6 +180,7 @@ class ExpressionAnalyzer(object):
 		this string pattern, which will be converted into a regular expression object.
 		Return the modified DataFrame.
 		'''
+		# Check out the built-in pandas filter method, too.
 		r = re.compile(s)
 		vsearch = np.vectorize(lambda x:bool(r.search(x)))
 		return df[df.columns[vsearch(df.columns)]]

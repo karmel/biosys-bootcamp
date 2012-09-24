@@ -1,14 +1,14 @@
-
-from __future__ import division
+from __future__ import division # Nicely done
 from pandas import DataFrame
 from pandas.io import parsers
 import re
 import numpy as np
 
 ##
-#Funtions#
+#Functions#
 ##
 
+# Where is my object? Don't comment it out!
 #class ExpressionAnalyzer(object):#
 #    '''Responsible for importing and analyzing gene expression data.'''#
 #    '''Expects data with named samples as columns and genes as rows.'''#
@@ -30,6 +30,7 @@ def genes_number(dataframe):
     
     return len(list(set(number)))
 
+# Note that there's no need for hash-marks at the end of comment lines.
 #Function that calculates for a given cell type (which has to be especified in the parameters), the correlation between its time points#
 def time_point_corr(dataframe, num_info_col):
     dataframe_corr=dataframe[dataframe.columns[num_info_col]].corr()
@@ -52,6 +53,11 @@ def candidate_genes(dataframe, num_info_col, num_info_cols, candidate_num):
     
     genes_list=dataframe[dataframe.columns[num_info_col]].ix[gene_id]
     return genes_list
+
+# A general rule of style in Python is that lines should be less than 80 char long.
+# That's a little stringent and often not followed for the sake of clarity,
+# but if you're the kind of person who writes super long lines of code, 
+# it is worthwhile to practice breaking them up. Makes the code easier to read for us reviewers.
 
 #Function that produces a list with the genes that show at least a two-fold higher expression when comparing two time points in all cell types#
 def two_fold_higher(dataframe, num_info_col, num_cols_cond1, num_cols_cond2):
@@ -99,6 +105,10 @@ NB4=time_point_corr(dfi, [18, 20, 22, 24, 26])
 NB4
 Jurkat=time_point_corr(dfi, [28, 30, 32, 34])
 Jurkat
+
+# Part of the appeal of Pandas is that it lets you use named columns rather than just indices.
+# That will go a long way in helping to generalize code like this, which as it is
+# will work for only this dataset only in this format.
 
 #Calculate which  cell types are the most similar#
 HL60_U937=time_point_corr(dfi, [2,10,18,28]).ix[0,1], time_point_corr(dfi, [4,12,30]).ix[0,1], time_point_corr(dfi, [6,14,20,32]).ix[0,1], time_point_corr(dfi, [8,16,22,34]).ix[0,1]

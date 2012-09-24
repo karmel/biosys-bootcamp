@@ -2,6 +2,9 @@ from pandas import DataFrame
 
 class MaxCorrelation(object):
 
+	# An interesting approach to make separate modules for each part of the question.
+	# If you do so, though, you should make a parent class so that you don't have to repeat
+	# reused code, like the init function, in each file.
 	def __init__(self, data):
 		self.dataframe = DataFrame(data)
 
@@ -37,7 +40,8 @@ class MaxCorrelation(object):
 					maxCo = corr
 					sampleName = [nameLst[i], nameLst[j]]
 		print("Most highly correlated samples in ", nameLst,"are " + sampleName[0] + " AND " + sampleName[1] + ". Value: " + str(maxCo))
-		return
+		return # Unlike R, in Python, you don't have to have return unless you actually want to return something.
+		# The default is that the function returns None, so you don't need return here.
 
 # Sample Name List
 nameLst1 = ['HL60_0_hrs', 'HL60_0.5_hrs', 'HL60_4_hrs', 'HL60_24_hrs']

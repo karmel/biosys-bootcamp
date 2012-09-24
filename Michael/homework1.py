@@ -22,10 +22,12 @@ class ExpressionAnalyzer(object):
 
     def getMostCorrelatedTimePointsByCellType(self,cell_types):
         ''' Takes a list of cell types and returns a list of lists, where each element of the list has the form [cell_type, [time_point1 time_point2]] where time_point1 and time_point2 are the most correlated time points of that cell type by Pearson correlation'''
+        # Descriptive comments! Yay!
         retList = []
         for cell_type in cell_types:
             max_cor = -2
             cell_type_expression_cols = [i for i in self.data.columns if i.find(cell_type) != -1]
+            # List comprehension! Right on!
             for i in range(0,(len(cell_type_expression_cols)-1)):
                 for j in range(i+1,len(cell_type_expression_cols)):
                     cor = stats.pearsonr(ea.data[cell_type_expression_cols[i]],ea.data[cell_type_expression_cols[j]])[0]
@@ -36,7 +38,13 @@ class ExpressionAnalyzer(object):
         return retList
 
     def getMostSimilarCellTypes(self,cell_types,time_points):
-        '''Takes a list of cell types and a list of time points to compare and returns a list of two members which are the most similar cell types based on average Pearson correlation accross the different time points'''
+        '''Takes a list of cell types and a list of time points to compare 
+        and returns a list of two members which are the most similar cell types based on average Pearson correlation 
+        accross the different time points'''
+        # A general rule of style in Python is that lines should be less than 80 char long.
+        # That's a little stringent and often not followed for the sake of clarity,
+        # but if you're the kind of person who writes super long lines of code, 
+        # it is worthwhile to practice breaking them up. Makes the code easier to read for us reviewers.
         max_sim = -2
         for i in range(0,(len(cell_types)-1)):
             for j in range(i+1,len(cell_types)):
@@ -57,6 +65,7 @@ class ExpressionAnalyzer(object):
 
     def getLeastVariantGenes(self,geneColumnName,numToGet):
         ''' Takes a column name of the column which contains gene identifiers and a number of genes to get and returns a list of the 10 least varying genes accross all conditions'''
+        # Probably more looping than is necessary-- can be done with slices and no appending.
         geneList = []
         for i in self.data.var(axis=1).order()[0:numToGet-1].index:
             geneList.append(self.data[geneColumnName][i])
@@ -77,6 +86,7 @@ class ExpressionAnalyzer(object):
 
     def getGenesDE(self,col1,col2,fold_change,geneColumnName):
         '''Takes two column names, a fold change and a column name containing gene identifiers and returns a list of genes differentially expressed between the two columns by at least the specified fold change'''
+        # Love that you used a fold_change var. 
         geneList = []
         for gene_index in range(0,len(self.data.index)):
             if not (1/fold_change*ea.data[col1][gene_index] < ea.data[col2][gene_index] < fold_change*ea.data[col1][gene_index]):
@@ -84,7 +94,8 @@ class ExpressionAnalyzer(object):
         return geneList
                 
 if __name__ == '__main__':
-
+    
+    # YAYYYY for following the template.
     print "Michael Kramer, Bioinformatics Bootcampe Homework 1, 9/19/2012\n"
     
     ea = ExpressionAnalyzer()
@@ -106,6 +117,8 @@ if __name__ == '__main__':
     for i in  ten_least_variant_genes:
         print i
 
+    # Okay, I tend towards really verbose var names too, but this might be a little excessive :)
+    # See above about shorter lines so that reviewers don't have to scroll...
     genes_2_fold_higher_in_all_4_at_24_compared_to_0 = ea.getGenesHigherInAllCellTypesAtTimePoint('0_hrs','24_hrs',2,cell_types,"Gene Accession Number")
     print "E) Genes 2 fold higher at 24 hours compared to 0 hours in all 4 cell lines: "
     for gene in genes_2_fold_higher_in_all_4_at_24_compared_to_0:
