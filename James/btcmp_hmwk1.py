@@ -3,7 +3,7 @@ import numpy as np
 import sys
 import re
 import math
-
+# Object oriented goodness. Awesome!
 class ExpressionAnalyzer(object):
 	"""
 	Object for analyzing gene expression files of the same general format as
@@ -32,6 +32,7 @@ class ExpressionAnalyzer(object):
 		Parameters: none
 		Returns: the number of genes (assuming each record in the file is a unique gene)
 		"""
+		# Not all genes were unique in the file --> must filter out dupes.
 		return len(self.data)
 		# when might this be insufficient?
 		
@@ -40,10 +41,12 @@ class ExpressionAnalyzer(object):
 		Parameters: name of a column
 		Returns: index of column with a given name. If not found, returns -1
 		"""
+		# Great commenting, with params and return notes on every object. Love it.
 		result_index = -1
 		pattern = "(.*?)"
 		pattern += self.delimiter
 		all_column_names = re.findall(pattern, self.header)
+		# Check out the pandas built in .filter() method too for regex
 		for index in range(0,len(all_column_names)):
 			if all_column_names[index] == field_name:
 				result_index = index
@@ -55,6 +58,8 @@ class ExpressionAnalyzer(object):
 		Parameters: a cell type prefix
 		Returns: a list of columns containing the specified prefix
 		"""
+		# Awesome. This is a method I should have factored out in my solution,
+		# but didn't. Nice that you did.
 		pattern = ",("
 		pattern += prefix
 		pattern += ".*?)["
@@ -129,6 +134,7 @@ class ExpressionAnalyzer(object):
 		"""
 		gene_names = self.data['Gene Accession Number']
 		self.data['std_dev'] = pd.Series(0, index=gene_names.index)
+		# Clever to create a new col in the dataframe itself
 		for row_index in range(0, len(self.data)):
 			std_devs = []
 			for prefix in list_of_prefixes:
