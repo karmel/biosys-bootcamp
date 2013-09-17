@@ -1,3 +1,4 @@
+#usage ipython microarray_analyzer.py >answers.txt
 import pandas
 from pandas import DataFrame
 from pandas.io import parsers
@@ -18,7 +19,8 @@ class ExpressionAnalyzer(object):
 	def count_gene(self):
 		'''Count gene number'''
 		print "The gene number is:"
-		print len(self.data.index) 	
+		gene_set = set (self.data["Gene Accession Number"])
+		print len(gene_set) 	
 		print '\n'
 
 	def time_corr(self):
