@@ -1,3 +1,5 @@
+# worked with Vu Ngo and Chris Wei
+
 import pandas
 import numpy as np
 from sys import argv
@@ -9,14 +11,15 @@ print 'added data table'
 data_nodup = data.drop_duplicates(cols='Gene Description', take_last=True)
 data_nodup.shape[0]
 
-print "#######################PARTA#######################"
+print "--- PART (A) ---"
 
 print data_nodup.shape[0], "genes"
 
 ################################################################
 
 #PART (B) which time points are most highly correlated
-print "#######################PARTB#######################"
+# calculated the correlation coefficients between columns using np.corrcoef, put into a list, and pulled out the max
+print "--- PART (B) ---"
 
 #CELL TYPE HL60
 
@@ -98,7 +101,7 @@ print "NB4 Highest Correlated", max(NB4_coefficients)
 ####################################################
 #Part (C)
 
-print "#######################PARTC#######################"
+print "--- PART (C) ---"
 
 cell_type_cmp = np.corrcoef(data['HL60_24_hrs'],data['U937_24_hrs'],data['NB4_72_hrs'],data['Jurkat_24_hrs call'])
 cell_type_coef = (('HL60vU937',cell_type_cmp[0,1]),('HL60vNB4',cell_type_cmp[0,2]),('HL60vJurkat',cell_type_cmp[0,3]),('U937vNB4',cell_type_cmp[1,2]),('U937vJurkat',cell_type_cmp[1,3]),('NB4vJurkat',cell_type_cmp[2,3]))
@@ -107,7 +110,9 @@ print 'Most similar gene types:', cell_type_coef
 
 ######################################################
 #Part (D)
-print "#######################PARTD#######################"
+# took the magnitude of the difference between the first and last data point of each cell line for each gene 
+# and put into a list: [['gene','value']] then sorted the list and took the top ten entries
+print "--- PART (D) ---"
 genelist = [['gene','value']]
 for x in range(1,data_nodup.shape[0]):
     genelist = genelist + [[data['Gene Description'][x],abs(data['Jurkat_0_hrs'][x]-data['Jurkat_24_hrs call'][x])]]
@@ -130,7 +135,7 @@ print genelist[10][0]
 #go through the list and check if any gene expression increase 2 fold at 24 hrs compared to 0 for all of the cell types. 
 #if 24hr/0hr >=2 ---> add the gene to a list
 
-print "#######################PARTE#######################"
+print "--- PART (E) ---"
 
 
 answerE=range(0)
@@ -143,7 +148,7 @@ print answerE
 # Part F:
 #create a ansF.txt file
 
-print "#######################PARTF#######################"
+print "--- PART (F) ---"
 
 
 script, filename = argv

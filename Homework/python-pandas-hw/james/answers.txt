@@ -1,12 +1,12 @@
 added data table
-#######################PARTA#######################
+--- PART (A) ---
 5001 genes
-#######################PARTB#######################
+--- PART (B) ---
 HL60 Highest Correlated ('4vs24', 0.91502729619575007)
 Jurkat Highest Correlated ('3v4', 0.97073365822932067)
 U937 Highest Correlated ('4vs24', 0.83943913242223567)
 NB4 Highest Correlated ('3v4', 0.94094012483061729)
-#######################PARTD#######################
+--- PART (D) ---
 ACP1 Acid phosphatase 1, soluble
 ACTN2 Actinin alpha 2 
 AFP Alpha-fetoprotein
@@ -17,6 +17,6 @@ APOB Apolipoprotein B
 APT1 Apoptosis (APO-1) antigen 1
 AQP2 Aquaporin 2 (collecting duct)
 ATP6A2 ATPase, H+ transporting, lysosomal (vacuolar proton pump), alpha polypeptide, 70kD, isoform 2
-#######################PARTE#######################
+--- PART (E) ---
 ['HPCAL1 Hippocalcin-like 1', 'Acylphosphatase, muscle type (MT) isoenzyme', 'ATF3 Activating transcription factor 3', 'No cluster in current Unigene and no Genbank entry for H22993 (qualifier H22993)', 'No cluster in current Unigene and no Genbank entry for H24635 (qualifier H24635)', 'SIGNAL TRANSDUCER AND TRANSCRIPTION ACTIVATOR 5A', 'RAC2 Ras-related C3 botulinum toxin substrate 2', 'PRKAR1A CAMP-dependent protein kinase regulatory subunit type I', 'GATA3 GATA-binding protein 3', '(clone S171) mRNA', 'SELL Leukocyte adhesion protein beta subunit', 'KRT5 Keratin 5 (epidermolysis bullosa simplex, Dowling-Meara/Kobner/Weber-Cockayne types)', 'IL8 Interleukin 8', 'DAF Decay accelerating factor for complement (CD55, Cromer blood group system)', 'CD53 CD53 antigen', 'DTR Diphtheria toxin receptor (heparin-binding epidermal growth factor-like growth factor)', "LTR mRNA, 3' end of coding region and 3' flank", 'ZFP36 Zinc finger protein homologous to Zfp-36 in mouse', 'GLUCOSE TRANSPORTER TYPE 3, BRAIN', 'ESTs', 'ESTs, Weakly similar to BASIGIN PRECURSOR [H.sapiens]', 'ESTs, Highly  similar to INTERFERON REGULATORY FACTOR 2 [Homo sapiens]', 'ESTs, Highly  similar to INTERFERON REGULATORY FACTOR 2 [Homo sapiens]', 'No cluster in current Unigene and no Genbank entry for T50678 (qualifier T50678_r_i)', 'ESTs', 'BCL6 B cell lymphoma protein 6 (zinc finger protein 51)', 'IL10R Interleukin 10 receptor', 'Bcl-2 related (Bfl-1) mRNA', 'KIAA0085 gene, partial cds', 'CSF1R Colony stimulating factor 1 receptor, formerly McDonough feline sarcoma viral (v-fms) oncogene homolog', 'EGR1 Early growth response protein 1', 'CDW52 CDW52 antigen (CAMPATH-1 antigen)', 'Uridine phosphorylase']
-#######################PARTF#######################
+--- PART (F) ---
