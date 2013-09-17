@@ -45,12 +45,13 @@ for line in range(len(dataset)):
 # The resulting list of lists is converted easily to a NumPy array. Since the entries in
 # the second column are unique while those in the first column are not, we would prefer 
 # to exchange the two columns and use the Accession numbers to identify rows in the data 
-# frame. We also do away with the unneeded "call" columns and convert strings to floating
-# points where appropriate.
+# frame. We also do away with the unneeded "call" columns, convert strings to floating
+# points where appropriate, and clean up one of the column titles.
 
 dataset = np.array(dataset)
 dataset[:,[0,1]] = dataset[:,[1,0]]
 dataset = np.append( dataset[:,0:2], dataset[:,2:dataset.shape[1]-1:2], axis=1)
+dataset[0,1] = 'Gene Description'
 
 dataset[1:,2:] = dataset[1:,2:].astype(np.float)
 
@@ -64,19 +65,25 @@ dataframe = DataFrame(dataset[1:,1:],
 #                              COUNTING UNIQUE GENES                                    #
 #########################################################################################
 
-# Counting the number of unique genes requires a simple for loop.
+# Counting the number of unique genes is now easy.
 
-genecount = 1;
-
-for index in range(2,dataset.shape[0]):
-    if dataset[index,1] != dataset[index-1,1]:
-        genecount +=1
+genecount = len(set(dataframe['Gene Description']))
 
 #########################################################################################
 #                              TIME POINT CORRELATION                                   #
 #########################################################################################
 
-# We want to find out which two time points show the most tightly correlated data across
-# cell types. We denote time by h.
+# We want to find out, for each cell type, which two time points are most tightly
+# correlated.
 
-# First let's consider h = 0 
+# First, let's find out how many cell types there are and what they are called.
+
+columns = dataframe.columns
+celltypes = list(columns)
+
+for column in range(len(columns)):
+    celltypes[column] = dataframe.columns[column].split('_')[0]
+    
+celltypes.pop(0)
+celltypes = list(set(celltypes))
+
