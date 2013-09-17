@@ -1,3 +1,5 @@
+# worked with Vu Ngo and Chris Wei
+
 import pandas
 import numpy as np
 from sys import argv
