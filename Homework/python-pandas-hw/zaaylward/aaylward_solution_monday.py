@@ -76,14 +76,16 @@ genecount = len(set(dataframe['Gene Description']))
 # We want to find out, for each cell type, which two time points are most tightly
 # correlated.
 
-# First, let's find out how many cell types there are and what they are called.
+# First, let's find out how many cell types there are and what they are called. We create
+# a list called "celltypes" which at first contains all of the column titles from our 
+# dataframe. We shrink it to a list of the cell types used in this dataset.
 
-columns = dataframe.columns
-celltypes = list(columns)
+celltypes = list(dataframe.columns)
 
-for column in range(len(columns)):
-    celltypes[column] = dataframe.columns[column].split('_')[0]
+for column in range(len(celltypes)):
+    celltypes[column] = celltypes[column].split('_')[0]
     
 celltypes.pop(0)
 celltypes = list(set(celltypes))
+
 
