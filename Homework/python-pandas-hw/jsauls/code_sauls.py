@@ -58,35 +58,59 @@ for cell in cell_ranges:
 # cells. This will result in 3 arrays (HL60 vs U937, HL60 vs Jurkat, and U937 vs Jurkat) of the norm distance 
 # between the gene's transcription profiles. I would omit the other dataset because its timepoints are out of 
 # sync and I'm not sure how to weight for that. Then I would just compute the sum of the abs value of those 
-# and whichever one is the lowest, I would call those most similar. But I can't for the life of me get the 
-# columns arranged right just to do the first calculation!
+# and whichever one is the lowest, I would call those most similar.
 
-# Declare cells, skip NB4 because the timepoints ars so wacky
+# Define Cells
 HL60 = df[[cols[1],cols[2],cols[3],cols[4]]]
-HL60 = HL60.T
-HL60 = HL60.iloc[0:4,0:7229]
-print HL60
-
 U937 = df[[cols[5],cols[6],cols[7],cols[8]]]
-U937 = U937.T
-U937 = U937.iloc[0:4,0:7229]
-print U937
-
 Jurkat = df[[cols[14],cols[15],cols[16],cols[17]]]
-Jurkat = Jurkat.T
-Jurkat = Jurkat.iloc[0:4,0:7229]
-print Jurkat
 
-# Comprare trancription profiles
-def comp_prof(prof1,prof2):
-    eu_dist = np.linalg.norm(arrayval1-arrayval2)
-    return eu_dist
+def prof_dist(p1,p2):
+    sub_array = [0,0,0,0]
+    # Subtract arrays... because I can't transpose them
+    for i in range(0,4):
+        sub_array[i] = p1[i] - p2[i]
+    # Calculate distance.
+    sub_array_dist = np.linalg.norm(sub_array)
+    return sub_array_dist
 
-prof1 = HL60['BioB (spiked control)']
-print prof1
-prof2 = U937['BioC (spiked control)']
-print prof2
-prof1-prof2
+# Calculate vector of diffencenes of transcription proflies by gene for 2 cell types.
+gene_distances = np.zeros(rows)
+for profile in range(0,rows):
+    #print profile
+    prof1 = HL60.ix[profile]
+    prof2 = U937.ix[profile]
+    gene_distances[profile] = prof_dist(prof1,prof2)
+
+# Use sum of abs val of array as 'similarity score'
+HL60vsU937 = np.max(np.absolute(gene_distances))
+print 'Similarity between HL60 and U936 is',HL60vsU937
+
+# Repeat
+# Calculate vector of diffencenes of transcription proflies by gene for 2 cell types.
+gene_distances = np.zeros(rows)
+for profile in range(0,rows):
+    #print profile
+    prof1 = HL60.ix[profile]
+    prof2 = Jurkat.ix[profile]
+    gene_distances[profile] = prof_dist(prof1,prof2)
+
+# Use sum of abs val of array as 'similarity score'
+HL60vsJurkat = np.max(np.absolute(gene_distances))
+print 'Similarity between HL60 and Jurkat is',HL60vsJurkat
+
+# Calculate vector of diffencenes of transcription proflies by gene for 2 cell types.
+gene_distances = np.zeros(rows)
+for profile in range(0,rows):
+    #print profile
+    prof1 = U937.ix[profile]
+    prof2 = Jurkat.ix[profile]
+    gene_distances[profile] = prof_dist(prof1,prof2)
+
+# Use sum of abs val of array as 'similarity score'
+U937vsJurkat = np.max(np.absolute(gene_distances))
+print 'Similarity between U937 and Jurkat is',U937vsJurkat
+
 
 
 print 'Least variable genes for calibration.'
