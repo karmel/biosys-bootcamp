@@ -18,6 +18,7 @@ print data_nodup.shape[0], "genes"
 ################################################################
 
 #PART (B) which time points are most highly correlated
+# calculated the correlation coefficients between columns using np.corrcoef, put into a list, and pulled out the max
 print "--- PART (B) ---"
 
 #CELL TYPE HL60
@@ -109,6 +110,8 @@ print 'Most similar gene types:', cell_type_coef
 
 ######################################################
 #Part (D)
+# took the magnitude of the difference between the first and last data point of each cell line for each gene 
+# and put into a list: [['gene','value']] then sorted the list and took the top ten entries
 print "--- PART (D) ---"
 genelist = [['gene','value']]
 for x in range(1,data_nodup.shape[0]):
