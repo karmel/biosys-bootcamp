@@ -1,6 +1,6 @@
 jt sauls
 python pandas homework
-A. There are 7229 genes.
+A. There are 5001 genes.
 
 B. Most similar timepoint by cell.
 The most similar timepoints are between HL60_0_hrs and HL60_4_hrs at 8509.98754406

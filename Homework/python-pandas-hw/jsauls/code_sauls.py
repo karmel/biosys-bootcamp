@@ -1,26 +1,31 @@
-# Get dataframe
+# Import modules
 from pandas import *
+import numpy as np
 
 # Import data from text file
 data = open('/Users/jt_temp/Desktop/data_set_HL60_U937_NB4_Jurkat.txt','r')
 df = read_csv(data,index_col=0,sep='\t')
-
 rows = df.index
 rows = len(rows)
 
-print 'A. There are',rows,'genes.'
+### Problem A
+# Reimporting because I named the index column for the df I use elsewhere.
+data = open('/Users/jt_temp/Desktop/data_set_HL60_U937_NB4_Jurkat.txt','r')
+dNames = read_csv(data,sep='\t')
+uniq = dNames['Gene Description'].nunique() 
+print 'A. There are',uniq,'genes.\n'
+
+### Problem B
+print 'B. Most similar timepoint by cell.'
 
 # Important columns for easy grabbing
 cols = ['Gene Accession Number','HL60_0_hrs','HL60_0.5_hrs','HL60_4_hrs','HL60_24_hrs',
         'U937_0_hrs','U937_0.5_hrs','U937_4_hrs','U937_24_hrs','NB4_0_hrs','NB4_5.5_hrs','NB4_24_hrs',
         'NB4_48_hrs','NB4_72_hrs','Jurkat_0_hrs','Jurkat_0.5_hrs','Jurkat_4_hrs','Jurkat_24_hrs']
 
-print 'Most similar timepoint by cell.'
-# Import numpy
-import numpy as np
-
 # Function that finds Euclidian distance between gene arrays.
 def gene_dist(arrayname1,arrayname2):
+    '''Takes two column names from the df and computes norm of the arrays.''' 
     arrayval1 = df[arrayname1]
     #print(str(type(arrayval1)))
     arrayval2 = df[arrayname2]
@@ -54,6 +59,7 @@ for cell in cell_ranges:
     print 'The most similar timepoints are between',cols[start_index],'and',cols[compare_index],'at',str(dist_low)
 
 # Problem C
+print '\nC.'
 # I know what I want to do here: first compare the transcription profiles of each gene pairwise between the
 # cells. This will result in 3 arrays (HL60 vs U937, HL60 vs Jurkat, and U937 vs Jurkat) of the norm distance 
 # between the gene's transcription profiles. I would omit the other dataset because its timepoints are out of 
@@ -65,7 +71,9 @@ HL60 = df[[cols[1],cols[2],cols[3],cols[4]]]
 U937 = df[[cols[5],cols[6],cols[7],cols[8]]]
 Jurkat = df[[cols[14],cols[15],cols[16],cols[17]]]
 
+# Function to comute norm between to transcripion profiles
 def prof_dist(p1,p2):
+    '''Takes two arrays (or annoying columns) and computes norm.'''
     sub_array = [0,0,0,0]
     # Subtract arrays... because I can't transpose them
     for i in range(0,4):
@@ -84,7 +92,7 @@ for profile in range(0,rows):
 
 # Use sum of abs val of array as 'similarity score'
 HL60vsU937 = np.max(np.absolute(gene_distances))
-print 'Similarity between HL60 and U936 is',HL60vsU937
+print 'Distance between HL60 and U936 is',HL60vsU937
 
 # Repeat
 # Calculate vector of diffencenes of transcription proflies by gene for 2 cell types.
@@ -97,7 +105,7 @@ for profile in range(0,rows):
 
 # Use sum of abs val of array as 'similarity score'
 HL60vsJurkat = np.max(np.absolute(gene_distances))
-print 'Similarity between HL60 and Jurkat is',HL60vsJurkat
+print 'Distance between HL60 and Jurkat is',HL60vsJurkat
 
 # Calculate vector of diffencenes of transcription proflies by gene for 2 cell types.
 gene_distances = np.zeros(rows)
@@ -109,11 +117,10 @@ for profile in range(0,rows):
 
 # Use sum of abs val of array as 'similarity score'
 U937vsJurkat = np.max(np.absolute(gene_distances))
-print 'Similarity between U937 and Jurkat is',U937vsJurkat
+print 'Distance between U937 and Jurkat is',U937vsJurkat
 
-
-
-print 'Least variable genes for calibration.'
+### Problem D
+print '\nD. Least variable genes for calibration.'
 
 # Data containing df
 df_data = df[['HL60_0_hrs','HL60_0.5_hrs','HL60_4_hrs','HL60_24_hrs',
@@ -129,8 +136,8 @@ for minimum in range(0,10):
     print str(min_index),df['Gene Accession Number'].ix[min_index]
     std_array.ix[min_index] = 1000 # Take in out of the running
 
-
-print 'Genes with 2-fold higher expression at 24h.'
+### Problem E
+print '\nE. Genes with 2-fold higher expression at 24h.'
 
 df_double = df[(df['HL60_24_hrs'].abs() >= df['HL60_0_hrs'].abs()*2)
                & (df['U937_24_hrs'].abs() >= df['U937_0_hrs'].abs()*2)
@@ -140,8 +147,8 @@ df_double = df[(df['HL60_24_hrs'].abs() >= df['HL60_0_hrs'].abs()*2)
 df_double = df_double['Gene Accession Number']
 print df_double
 
-
-print 'Genes that are diffenentially regulated between HL60 and U937 at 0h'
+### Problem F
+print '\nF. Genes that are diffenentially regulated between HL60 and U937 at 0h'
 
 df_double = df[((df['HL60_0_hrs'].abs() / df['U937_0_hrs'].abs()) > 2)
                | ((df['HL60_0_hrs'].abs() / df['U937_0_hrs'].abs()) > 2)]
