@@ -1,0 +1,12 @@
+-----A-----
+
+The number of unique genes is 5001 
+
+-----B-----
+
+For each cell type, the most highly correlated time points are:
+
+U937: [['U937_0.5_hrs', 'U937_4_hrs']]
+HL60: [['HL60_0_hrs', 'HL60_4_hrs']]
+NB4: [['NB4_24_hrs', 'NB4_48_hrs']]
+Jurkat: [['Jurkat_0.5_hrs', 'Jurkat_4_hrs']]
