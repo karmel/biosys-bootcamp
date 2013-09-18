@@ -179,7 +179,12 @@ for celltypeindex in range(celltypecount):
     
 #########################################################################################
 #                                 PRINTING RESULTS                                      #
-#########################################################################################    
+######################################################################################### 
+print('-----A-----')
+
+print('\nThe number of unique genes is %d \n' % genecount) 
+
+print('-----B-----')
 
 print('\nFor each cell type, the most highly correlated time points are:\n')
 
