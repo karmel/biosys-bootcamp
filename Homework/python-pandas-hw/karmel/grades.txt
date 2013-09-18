@@ -1,4 +1,4 @@
-						Completeness		Quality		Sum
+					Completeness				Quality			Sum
 anthony-aylward				2					5			7
 bkellman				5					4			9
 cjwei					4					3			7
