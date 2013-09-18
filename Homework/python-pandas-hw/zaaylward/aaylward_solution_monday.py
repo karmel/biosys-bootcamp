@@ -177,7 +177,7 @@ class ExpressionAnalyzer(object):
     
                 for timepointjndex in range(timepointcount):
         
-                    if timepointindex > timepointjndex:
+                    if timepointindex < timepointjndex:
             
                         # We are now looking at a specific pair of time points. We can find their
                         # correlation coefficient ("corr_value",) and the value of the
@@ -193,14 +193,14 @@ class ExpressionAnalyzer(object):
                 
                         if corr_value > max_corr:
                     
-                            most_correlated_times = [[celltype_sorting_bin[celltypeindex][timepointjndex], celltype_sorting_bin[celltypeindex][timepointindex]]]
+                            most_correlated_times = [[celltype_sorting_bin[celltypeindex][timepointindex], celltype_sorting_bin[celltypeindex][timepointjndex]]]
                 
                         # In the case of a tie, we append the new pair so that both (or all) 
                         # maximally correlated pairs are recorded.
                 
                         if corr_value == max_corr:
                     
-                            most_correlated_times.append([celltype_sorting_bin[celltypeindex][timepointjndex], celltype_sorting_bin[celltypeindex][timepointindex]])
+                            most_correlated_times.append([celltype_sorting_bin[celltypeindex][timepointindex], celltype_sorting_bin[celltypeindex][timepointjndex]])
                 
                         # Lastly, we record the current correlation coefficient in the storage
                         # matrix.
