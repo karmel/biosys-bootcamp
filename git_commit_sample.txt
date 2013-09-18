@@ -1,0 +1,14 @@
+mkdir biosys-bootcamp
+cd biosys-bootcamp/
+git clone git@github.com:karmel/biosys-bootcamp.git
+cd biosys-bootcamp/
+git checkout biosys-2013
+cd biosys-bootcamp/Homework/python-pandas-hw
+mkdir karmel
+cd karmel/
+touch answers.txt
+touch microarray_analyzer.py
+git add .
+git commit -a -m "Adding karmel's HW"
+git push
+
