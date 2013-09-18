@@ -1,12 +1,11 @@
-
 						Completeness		Quality		Sum
-anthony-aylward			2					5			7
+anthony-aylward				2					5			7
 bkellman				5					4			9
 cjwei					4					3			7
 jyurkovich				4					3			7
 jeyuan					5					5			10
 jenhantao				5					4			9
-jia						4					5			9
+jia					4					5			9
 huangger				5					4			9
 jtsauls					4					4			8
 smollah					2					4			6
