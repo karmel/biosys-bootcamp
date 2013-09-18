@@ -1,0 +1,33 @@
+Problem 1
+
+7229
+
+
+Problem 2
+
+HL60: time = 0 hrs, time = 1 hrs
+U937: time = 0.5 hrs, time = 1 hrs
+NB4: time = 24 hrs, time = 48 hrs
+Jurkat: time = 0.5 hrs, time = 1 hrs
+
+
+
+Problem 3
+
+U937 and NB4
+
+
+Problem 4
+Best conserved genes among cells:
+D43772
+D43948
+D43947
+D43638_i
+D43638_f
+D00306
+D43768
+D43638_r_i
+D43949_f
+BioB
+
+
