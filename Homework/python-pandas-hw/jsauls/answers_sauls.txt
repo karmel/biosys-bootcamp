@@ -1,0 +1,104 @@
+jt sauls
+python pandas homework
+A. There are 5001 genes.
+
+B. Most similar timepoint by cell.
+The most similar timepoints are between HL60_0_hrs and HL60_4_hrs at 8509.98754406
+The most similar timepoints are between U937_0.5_hrs and U937_4_hrs at 6243.49717706
+The most similar timepoints are between NB4_24_hrs and NB4_48_hrs at 5510.58962362
+The most similar timepoints are between Jurkat_0.5_hrs and Jurkat_4_hrs at 5395.0076923
+
+C. 
+Similarity between HL60 and U936 is 13523.9653209
+Similarity between HL60 and Jurkat is 12926.6247722
+Similarity between U937 and Jurkat is 6909.46177354
+
+I was playing golf, so U937 and Jurkat are the most similar.
+
+
+D. Least variable genes for calibration.
+1496 H85478
+1555 H88261
+3211 M95586_r_i
+6799 X73424_i
+4560 R94219
+6204 U39231
+1444 H82137
+2055 L20814
+3650 R39006
+7010 X86401
+
+E. Genes with 2-fold higher expression at 24h.
+Gene Description
+FPRL2 Formyl peptide receptor-like 2                              D10922
+EDNRB Endothelin receptor type B                                  D13168
+KIAA0012 gene                                                     D13637
+HPCAL1 Hippocalcin-like 1                                         D16227
+ESTs                                                              H16709
+Acylphosphatase, muscle type (MT) isoenzyme                       H20926
+ATF3 Activating transcription factor 3                            H21042
+No cluster in current Unigene and no Genbank entry for H22993 (qualifier H22993)      H22993
+No cluster in current Unigene and no Genbank entry for H24635 (qualifier H24635)      H24635
+IgG Fc binding protein                                            H26655
+ESTs                                                              H28466
+ESTs, Highly  similar to RIBOSOMAL PROTEIN S6 KINASE II ALPHA 2 [Mus musculus]      H38216
+SIGNAL TRANSDUCER AND TRANSCRIPTION ACTIVATOR 5A                H38990_i
+ESTs                                                              H39669
+ESTs, Weakly similar to unknown [H.sapiens]                       H41732
+...
+IL1B Interleukin 1, beta                                          X04500
+HMOX1 Heme oxygenase (decycling) 1                                X06985
+MMP10 Matrix metalloproteinase 10 (stromelysin 2)                 X07820
+IRF2 Interferon regulatory factor 2                             X15949_i
+EGR1 Early growth response protein 1                            X52541_f
+ITGA6 Integrin, alpha 6                                           X53586
+GATA3 GATA-binding protein 3                                      X58072
+No cluster in current Unigene and no Genbank entry for X61079 (qualifier X61079)      X61079
+CDW52 CDW52 antigen (CAMPATH-1 antigen)                           X67699
+CTRL Chymotrypsin-like                                            X71877
+IKBL mRNA                                                         X77909
+No cluster in current Unigene and no Genbank entry for X79066 (qualifier X79066)      X79066
+Membrane-type matrix metalloproteinase                            X83535
+Uridine phosphorylase                                           X90858_f
+Delta 4-3-oxosteroid 5 beta-reductase                             Z28339
+Name: Gene Accession Number, Length: 106, dtype: object
+
+F. Genes that are diffenentially regulated between HL60 and U937 at 0h
+Gene Description
+CYP3A3 Cytochrome P450 IIIA3 (nifedipine oxidase chain 3)       D00003_i
+ADH2 Alcohol dehydrogenase 2 (class I), beta polypeptide          D00137
+CYP2C9 Cytochrome P450, subfamily IIC (mephenytoin 4-hydroxylase), polypeptide 9      D00173
+FECH Ferrochelatase (protoporphyria)                              D00726
+PTAFR Platelet activating factor receptor                         D10202
+POU1F1 POU domain, class 1, transcription factor 1 (Pit1, growth hormone factor 1)      D10216
+CBFA2 Core-binding factor, runt domain, alpha subunit 2 (acute myeloid leukemia 1; aml1 oncogene) {alternative products}      D10570
+CRK V-crk avian sarcoma virus CT10 oncogene homolog               D10656
+CHK Choline kinase                                                D10704
+PMP22 Peripheral myelin protein 22                              D11428_i
+PMP22 Peripheral myelin protein 22                              D11428_r
+NF1 Neurofibromin                                                 D12625
+EIF4G Eukaryotic translation initiation factor 4 (eIF-4) gamma    D12686_r
+ETV4 Ets variant gene 4 (E1A enhancer-binding protein, E1AF)    D12765_i
+ETV4 Ets variant gene 4 (E1A enhancer-binding protein, E1AF)    D12765_r
+...
+LTBP2 Latent transforming growth factor beta binding protein 2      Z37976
+HXC-26 mRNA                                                       Z46376
+VASP Vasodilator-stimulated phosphoprotein                        Z46389
+SOX9 SRY (sex-determining region Y)-box 9 (campomelic dysplasia, autosomal sex-reversal)    Z46629_f
+No cluster in current Unigene and no Genbank entry for Z46967 (qualifier Z46967_i)    Z46967_i
+FAS Del 2 mRNA                                                    Z47994
+mRNA encoding GPI-anchored protein p137                           Z48042
+PXR1 Peroxisome receptor 1                                        Z48054
+SDC1 Syndecan 1                                                   Z48199
+GCKR Glucokinase regulator                                      Z48475_f
+GCKR Glucokinase regulator                                      Z48475_i
+MT-MMP protein                                                    Z48481
+OBF-1 mRNA for octamer binding factor 1                           Z49194
+P2Y1 purinoceptor mRNA, long form                                 Z49205
+No cluster in current Unigene and no Genbank entry for Z50194 (qualifier Z50194)      Z50194
+Name: Gene Accession Number, Length: 2734, dtype: object
+
+G. Sorry, got a list of genes and was able to submit them to David, but not really sure what I was looking for.
+
+
+

@@ -1,0 +1,25 @@
+2013 SysBio Bootcamp HW1
+Jeffrey Yuan
+
+A. There are 5001 distinct genes (with distinct Gene Descriptions).
+
+B. The most correlated time-points for each cell-type are,
+HL60: 0.5-hr and 4-hr
+U937: 0.5-hr and 4-hr
+NB4: 5.5-hr and 24-hr
+Jurkat: 4-hr and 24-hr
+
+C. The most similar cell types are NB4 and Jurkat based on mean and std.
+
+D. Ten good candidates for machine calibration (by Gene Accession 
+Number) are R89278_i, M54927, H88261, M95586_r_i, X73424_i, T50661, 
+H85478, L20814, R41866_f, and M23668
+
+E. 375 genes show two-fold higher expression after 24 hours for all cell 
+types. See attached list for all of their Gene Accession Numbers.
+
+F. 5544 genes show differential regulation between HL60 and U937 cells. 
+See attached list for all of their Gene Accession Numbers.
+
+G. There were several enriched ontology terms found using the DAVID 
+ontology analyzer. See attached file for complete chart.
