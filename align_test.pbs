@@ -1,6 +1,6 @@
 #!/bin/bash
 #PBS -q normal
-#PBS -l nodes=2:ppn=16:native
+#PBS -l nodes=1:ppn=16:native
 #PBS -l walltime=0:10:00
 #PBS -N alignA549
 #PBS -o align.out
