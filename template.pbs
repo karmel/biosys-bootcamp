@@ -1,0 +1,16 @@
+#!/bin/bash
+#PBS -q normal
+#PBS -l nodes=2:ppn=16:native
+#PBS -l walltime=0:10:00
+#PBS -N alignA549
+#PBS -o align.out
+#PBS -e align.err
+#PBS -A csd399
+#PBS -M <your email>
+#PBS -m abe
+#PBS -V
+# Start of user commands - comments start with a hash sign (#)
+export BOWTIE2_INDEXES=/home/$USER/bt2
+cd /oasis/scratch/$USER/temp_project
+bowtie2 -t -p 16 --very-fast -q -x hg19 -U /home/$USER/data/A549_DEC1_sequence_$
+
