@@ -1,0 +1,35 @@
+QA: Distinct genes
+There are 5001 distinct genes according to gene description. 
+
+QB: Correlated timepoints
+For HL60, 0hr and 4hr are most correlated timepoints. (0.966224)
+For U937, 0.5hr and 4hr are most correlated timepoints. (0.964712)
+For NB4, 24hr and 48hr are most correlated timepoints. (0.966149)
+For Jurkat, 0.5hr and 4hr are most correlated timepoints. (0.978884)
+
+QC: Correlated cell lines
+According to data from 0hr and 24hr, NB4 and Jurkat are most correlated. (0.830743)
+
+QD: Stable Genes
+According to standard deviation indexed by accession number, most stable genes are:
+1496        H85478
+1555        H88261
+3211    M95586_r_i
+6799      X73424_i
+4560        R94219
+6204        U39231
+1444        H82137
+2055        L20814
+3650        R39006
+7010        X86401
+
+QE: Fold change 0hr -> 24hr
+1924 genes showed more than two times fold change from 0hr to 24hr in all the cell lines. 
+
+QF: Fold change HL60 vs U937
+(I've cut off everything that has a negative reading from the start)
+see genelist.txt. 
+
+QG: DAVID.
+see Functional Annotation Clustering.txt
+

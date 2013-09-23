@@ -1,0 +1,17 @@
+#!/bin/bash
+#PBS -q normal
+#PBS -l nodes=1:ppn=16:native
+#PBS -l walltime=0:10:00
+#PBS -N alignA549
+#PBS -o align.out
+#PBS -e align.err
+#PBS -A csd399
+#PBS -M <your email>
+#PBS -m abe
+#PBS -V
+# Start of user commands - comments start with a hash sign (#)
+export BOWTIE2_INDEXES=/home/$USER/bt2
+module load biotools
+cd /oasis/scratch/$USER/temp_project
+bowtie2 -t -p 16 --very-fast -q -x hg19 -U /oasis/projects/nsf/csd399/$USER/data/A549_DEC1_sequence_rep1_120123_MAGNUM_00122_FC63A4Y_L1_pf.fastq -S /oasis/projects/nsf/csd399/$USER/data/align_test.sam
+
