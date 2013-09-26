@@ -78,17 +78,22 @@ def main():
 	hw1.read_csv(filename)
 
 	#call solution:
-	'''	hw1.Q_A()
-	hw1.Q_B()
-	hw1.Q_C()
-	hw1.Q_D()
-	hw1.Q_E()'''
-	hw1.Q_F()
+	qlist = 'ABCDEF'
+	hw1_questions = {'A': hw1.Q_A, 'B': hw1.Q_B, 'C': hw1.Q_C, 'D': hw1.Q_D, 'E': hw1.Q_E, 'F': hw1.Q_F}
 	
+	for q in qlist:
+		hw1_questions[q]()
+
+
 	''' #for some reason the following is not working:
+        #case1
         for problem in 'ABCDEF':
         	print 'Q_' + problem
         	hw1.__getattribute__('Q_'+ problem)()
+        #case2
+        	qlist = 'ABCDEF'
+		hw1_questions1 = {x:'hw1.Q_'+x for x in qlist}
+		for q in qlist:hw1_qustions[q]()
 	'''
 	
 if __name__ == '__main__':
